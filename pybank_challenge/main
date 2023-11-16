@@ -1,1 +1,20 @@
 
+#import files and filepath 
+import os
+import csv 
+output_path =os.path.join("budget_data.csv")
+
+#explain output path and include delimiter
+with open(output_path) as csvfile:
+    csvreader= csv.reader(csvfile, delimiter=',')
+
+#read header
+    csv_header = next(csvreader)
+    print(f"CSV Header: {csv_header}")
+
+#print row of data
+    month = 0
+    for row in csvreader:
+        month= month + 1
+        print(row)
+    print(month)
