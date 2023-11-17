@@ -1,20 +1,52 @@
-
 #import files and filepath 
 import os
 import csv 
-output_path =os.path.join("budget_data.csv")
 
-#explain output path and include delimiter
-with open(output_path) as csvfile:
+#File pathways
+input_path= os.path.join("budget_data.csv")
+output_text_path= "financial_analysis.txt"
+
+#variables
+total_months = 0
+total_profit= 0
+previous_profit = 0
+profit_changes = []
+dates = []
+
+#Print the data and calcuate the totals
+with open(input_path) as csvfile:
     csvreader= csv.reader(csvfile, delimiter=',')
 
 #read header
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
 
-#print row of data
-    month = 0
+#print dates and calculate total
     for row in csvreader:
-        month= month + 1
-        print(row)
-    print(month)
+        total_months += 1
+        profit = int(row[1])
+        total_profit += profit
+        profit_change = profit - previous_profit
+        profit_changes.append(profit_changes)
+        dates.append(row[0]) #date is in the first column
+        previous_profit = profit
+
+#calculate average profit by month
+#average_change = sum(profit_change) / (total_months -1)
+
+#Calculate the highest increase in profits
+biggest_increase = max(profit_changes)
+biggest_decrease = min(profit_changes)
+
+#Find the dates of the biggest increase and biggest loss
+biggest_increase_date= dates[profit_changes.index(biggest_increase)]
+biggest_decrease_date= dates[profit_changes.index(biggest_decrease)]
+
+#Print final results to terminal
+print("Financial Analysis")
+print("_______________________________")
+print(f"total months: {total_months}")
+print(f"Total Profits: ${total_profit}")
+print(f"Average Change: ${average_change:.2f}")
+print(f"Greatest Increase in Profit: {biggest_increase_date} (${biggest_increase})")
+print(f"Greatest Decrease in Profits: {biggest_decrease_date} (${biggest_decrease})")
