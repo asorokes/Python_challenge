@@ -1,1 +1,29 @@
+import os
+import csv
+output_path= os.path/user/adamsorokes/downloads/starter_code-2/PyPoll/resources/election_data.csv)
 
+with open(output_path,newline = ' ') as csvfile:
+    csvreader= csv.reader(csvfile, delimiter=',')
+
+    next(csvreader)
+#Total votes cast
+row_count= len(data)
+
+#List of candidates receiving votes
+candidatelist= []
+tally= list()
+for i in range(row_count):
+    candidate= data[i][2]
+    tally.append(candidate)
+    if candidate not in candidatelist:
+        candidatelist.append(candidate)
+candidatecount=len(candidatelist)
+
+#Number of votes each received by each candidate and percentage won per candidate
+votes= list()
+percentage= list()
+for j in range(0, candidatecount):
+    name= candidatelist [j]
+    votes.append(tally.count(name))
+    precentvote= votes [j]/row_count
+    percentage.append(percentvote)
