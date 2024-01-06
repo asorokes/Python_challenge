@@ -35,10 +35,6 @@ with open(input_path) as csvfile:
 # Calculate average profit change
 average_change = sum(profit_changes) / (total_months - 1)
 
-# Print the results
-#print(f"Total Months: {total_months}")
-#print(f"Total Profit: ${total_profit}")
-#print(f"Average Change: ${average_change:.2f}")
 
 #Calculate the highest increase in profits
 biggest_increase = max(profit_changes)
